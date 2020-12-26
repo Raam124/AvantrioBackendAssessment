@@ -1,0 +1,97 @@
+***ASSUMPTIONS FOR ER***
+
+1.Company, candidates,Interviwers, assesors all are considered as users for simplicity
+2.users(company) can add multiple interviwers and candidates for each job they create
+3.A particulat questionset is only for one job and a job can have multiple question sets.
+4.the abouve statement is also true for relationship between job and assessments too.
+
+
+
+
+***PROBLEMS FACED DURING ER***
+
+I can't go straight inti Django models after ER without doing Relational Mapping, Normmalization and class Diagram but Since it's a tight time schedule I tried my best to assume most of the relationships without getting into complex diagrams by only using ER 
+
+The scenario starts like it's a SaaS product that help companies to conduct interviews and companies will add other users such ad candidates and interviwers. But the latter part saya candidates can apply for jobs. I'm unclear about this situation. If the platform acts like job applying and conduction interviews both there must be role based authentication system for this SaaS. At API implementation part it says assume that any user can act as a candidate.
+
+So I assumed there is only one type of user current for simplicity without inmplemeting custom authentication system. It's posibble but for this short time of period I sticked to one type of users.
+
+Then for the work history part I assumed each candidate has a work history belong to them. Since candidates are assigned to a job by the company it will be also considered as Job->id->candidate->id->job history this way. Like work history is part of upload process that can candidate do. Custom permission classes implemented for particular candicate can be the only person delete or edit the work  history others can only view.
+
+
+
+
+***API FUNCTIONALITIES IMPLEMENTED***
+
+User Login JWT token based Authentication 
+User Registration in Django REST Framework
+User Account GET and PUT using Token based PERMISSIONS 
+Job CRUD custom permission used for only created user can edit or delete others can view
+Work history CRUD same as above ony owner of work history candidate can PUT or DELETE other can view
+but default premission backend is set to Authenticated users only So users with JWT token only can view the API details
+SimpleJWT Token based authentication is implemented for all users. all views are restricted to Authenticated Users 
+Endpoints are tested using Httpie and postman
+
+
+
+
+***END POINTS ARE LISTED BELOW***
+
+***AUTHENTICATION ENDPOINTS***
+
+1. login :  				http://127.0.0.1:8000/api/token/
+2. register :				http://127.0.0.1:8000/api/auth/register/
+3. get my account :			 http://127.0.0.1:8000/api/auth/me/<username>
+4. Update my account :  		http://127.0.0.1:8000/api/auth/me/<username>
+
+
+***JOB CRUD ENDPOINTS***
+
+1.GET List : 				http://127.0.0.1:8000/api/jobs/
+2.GET, PUT, DELETE one job: 		http://127.0.0.1:8000/api/jobs/1/ 
+
+***WORK HISTORY CRUD***
+
+1.GET List :				 http://127.0.0.1:8000/api/jobs/workhistory/
+2.GET, PUT, DELETE one work history: 	http://127.0.0.1:8000/api/jobs/workhistory/1/
+
+
+pipenv used as a virtual environment. install dependencies using Pipfile
+ 
+Superuser: 
+username:admin password:1234 (or create your own)
+
+sample account:
+ username: nashara password: 123djangoD
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
