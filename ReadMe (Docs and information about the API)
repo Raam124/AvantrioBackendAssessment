@@ -41,8 +41,8 @@ Endpoints are tested using Httpie and postman
 
 1. login :  				http://127.0.0.1:8000/api/token/
 2. register :				http://127.0.0.1:8000/api/auth/register/
-3. get my account :			 http://127.0.0.1:8000/api/auth/me/<username>
-4. Update my account :  		http://127.0.0.1:8000/api/auth/me/<username>
+3. get my account :			 http://127.0.0.1:8000/api/auth/me/<username>     -> get the logged in user account(username will be logged in user's username)
+4. Update my account :  		http://127.0.0.1:8000/api/auth/me/<username>  -> get the logged in user account(username will be logged in user's username)
 
 
 ***JOB CRUD ENDPOINTS***
